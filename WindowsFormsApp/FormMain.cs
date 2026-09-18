@@ -17,6 +17,7 @@ namespace WindowsFormsApp
         public FormMain()
         {
             InitializeComponent();
+            inputPixels = new double[15];
         }
 
         private void change_button_color_Click(object sender, EventArgs e)
@@ -25,14 +26,15 @@ namespace WindowsFormsApp
             if (clicked_button.BackColor == Color.Black)
             {
                 clicked_button.BackColor = Color.White;
-                inputPixels[clicked_button.TabIndex] = 1d;
+                inputPixels[clicked_button.TabIndex] = 0d;
             }
             else
             {
                 clicked_button.BackColor = Color.Black; 
-                inputPixels[clicked_button.TabIndex] = 0d;
+                inputPixels[clicked_button.TabIndex] = 1d;
             }
         }
+
 
         private void saveTrainButton_Click(object sender, EventArgs e)
         {
@@ -63,5 +65,6 @@ namespace WindowsFormsApp
 
             File.AppendAllText(path, tmpStr);
         }
+
     }
 }

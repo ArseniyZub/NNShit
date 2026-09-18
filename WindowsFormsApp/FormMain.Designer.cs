@@ -43,10 +43,10 @@
             this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_NecessaryOutput = new System.Windows.Forms.NumericUpDown();
             this.saveTrainSetbutton = new System.Windows.Forms.Button();
             this.saveTestbutton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_NecessaryOutput)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -214,12 +214,12 @@
             this.button15.UseVisualStyleBackColor = false;
             this.button15.Click += new System.EventHandler(this.change_button_color_Click);
             // 
-            // numericUpDown1
+            // numericUpDown_NecessaryOutput
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(397, 78);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(106, 31);
-            this.numericUpDown1.TabIndex = 15;
+            this.numericUpDown_NecessaryOutput.Location = new System.Drawing.Point(397, 78);
+            this.numericUpDown_NecessaryOutput.Name = "numericUpDown_NecessaryOutput";
+            this.numericUpDown_NecessaryOutput.Size = new System.Drawing.Size(106, 31);
+            this.numericUpDown_NecessaryOutput.TabIndex = 15;
             // 
             // saveTrainSetbutton
             // 
@@ -248,7 +248,7 @@
             this.ClientSize = new System.Drawing.Size(1180, 682);
             this.Controls.Add(this.saveTestbutton);
             this.Controls.Add(this.saveTrainSetbutton);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.numericUpDown_NecessaryOutput);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.button13);
@@ -266,7 +266,7 @@
             this.Controls.Add(this.button1);
             this.Name = "FormMain";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_NecessaryOutput)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -288,9 +288,8 @@
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDown_NecessaryOutput;
         private System.Windows.Forms.Button saveTrainSetbutton;
         private System.Windows.Forms.Button saveTestbutton;
     }
 }
-
