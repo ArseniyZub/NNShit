@@ -71,7 +71,7 @@ namespace WindowsFormsApp.NeuroNet
 
                 case NeuronType.Output:
                     output = Exp(sum);
-                    // derivative = Tanh
+                    //derivative = Tanh
                     break;
             }
         }
@@ -81,7 +81,6 @@ namespace WindowsFormsApp.NeuroNet
         {
             double bx = b*sum;
 
-            // Безопасный расчет базового тангенса без встроенных методов
             if (bx > 20.0)
             {
                 return a*1.0;
