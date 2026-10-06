@@ -116,22 +116,35 @@ namespace WindowsFormsApp.NeuroNet
                         "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                     Random random = new Random();
-                    double tmpRatio; // коэф
-                    double tmpShift; // смещение 
+                    
                     double[] tmpArr = new double[numOfPrevNeurons + 1];// массив весов одного нейрона
                     tmpStrWeights = new string[numOfNeurons]; // массив строк синаптических весов
 
+                    double std = 1.0 / Math.Sqrt(numOfPrevNeurons);
+                    double a = Math.Sqrt(3.0) / std;
+
                     for (int i = 0; i < numOfNeurons; i++)
                     {
+                        tmpStr = "";
                         for (int j = 0; j < numOfPrevNeurons + 1; j++)
                         {
-                            tmpArr[j] = 0.02*random.NextDouble() - 0.01; // случайная инициализация
+                            tmpArr[j] = (2.0*random.NextDouble() - 1.0)*a; // случайная инициализация
                                                                          // синаптического веса от -0.01 до 0.01
+                            if (j > 0)
+                            {
+                                tmpStr += ';';
+                            }
+
+                            tmpStr += tmpArr[j].ToString(System.Globalization.CultureInfo.InvariantCulture);
                         }
+                        tmpStrWeights[i] = tmpStr;
                     }
 
+                    File.WriteAllLines(path, tmpStrWeights);
                     break;
             }
+
+            return weights;
             
         }
 
