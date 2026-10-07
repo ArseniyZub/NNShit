@@ -66,7 +66,73 @@ namespace WindowsFormsApp.NeuroNet
 
         public double[,] WeightInitialize(MemoryMode mm, string path)
         {
-            return new double[1, 1];
+            char[] delim = new char[] { ' ', ';' };
+            string tmpStr; // временная строка для чтения
+            string[] tmpStrWeights; // временный массив строк 
+            double[,] weights = new double[numOfNeurons, numOfPrevNeurons + 1];
+
+            switch (mm)
+            {
+                case MemoryMode.GET:
+                    tmpStrWeights = File.ReadAllLines(path);
+                    string[] memory_element;
+                    for (int i = 0; i < numOfNeurons; i++)
+                    {
+                        memory_element = tmpStrWeights[i].Split(delim); // разбтваем строку на элементы
+
+                        for (int j = 0; j < numOfPrevNeurons + 1; j++)
+                        {
+                            weights[i, j] = double.Parse(memory_element[j].Replace(',', '.'), // преобразование строк с запятой в точку
+                                System.Globalization.CultureInfo.InvariantCulture); // игнорирование культурных различий записи 
+                        }
+                    }
+                    break;
+
+
+                case MemoryMode.SET:
+                    tmpStrWeights = new string[numOfNeurons];
+                    if (!File.Exists(path))
+                    {
+                        MessageBox.Show("Файл" + name_Layer + "_memory.csv синаптические веса не найден." + 
+                            "\nПосле нажатия ОК все файлы создадутся", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+
+                    for (int i = 0; i < numOfNeurons; i++)
+                    {
+                        tmpStr = neurons[i].Weights[0].ToString();
+                        for (int j = 1; j < numOfPrevNeurons + 1; j++)
+                        {
+                            tmpStr += delim[0] + neurons[i].Weights[j].ToString();
+                        }
+                        tmpStrWeights[i] = tmpStr;
+                    }
+
+                    File.WriteAllLines(path, tmpStrWeights);
+                    break;
+
+                case MemoryMode.INIT:
+                    MessageBox.Show("Файл" + name_Layer + "_memory.csv синаптических весов не найден\n" +
+                        "После нажатия ОК создастья новый файл весов и нейросеть вернется к <<Новорожденному>> состоянию", 
+                        "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    Random random = new Random();
+                    double tmpRatio; // коэф
+                    double tmpShift; // смещение 
+                    double[] tmpArr = new double[numOfPrevNeurons + 1];// массив весов одного нейрона
+                    tmpStrWeights = new string[numOfNeurons]; // массив строк синаптических весов
+
+                    for (int i = 0; i < numOfNeurons; i++)
+                    {
+                        for (int j = 0; j < numOfPrevNeurons + 1; j++)
+                        {
+                            tmpArr[j] = 0.02*random.NextDouble() - 0.01; // случайная инициализация
+                                                                         // синаптического веса от -0.01 до 0.01
+                        }
+                    }
+
+                    break;
+            }
+            
         }
 
     }
