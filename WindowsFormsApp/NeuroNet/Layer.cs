@@ -148,5 +148,8 @@ namespace WindowsFormsApp.NeuroNet
             
         }
 
+        abstract public void Recognize(Network net, Layer nextLayer); // для прямого прохода
+        abstract public double[] BackwardPass(double[] stuff); // для обратного прохода 
+
     }
 }

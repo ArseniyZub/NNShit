@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace WindowsFormsApp.NeuroNet
 {
-    internal class Network
+    class Network
     {
+        private double[] fact = new double[10];
+        public double[] Fact { get => fact; } // массив фактического вывода сети
     }
 }
