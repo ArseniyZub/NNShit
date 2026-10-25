@@ -8,16 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp.NeuroNet;
 
 namespace WindowsFormsApp
 {
     public partial class FormMain : Form
     {
         private double[] inputPixels;
+        private Network network;
         public FormMain()
         {
             InitializeComponent();
             inputPixels = new double[15];
+
+            network = new Network();
         }
 
         private void change_button_color_Click(object sender, EventArgs e)
@@ -66,5 +70,11 @@ namespace WindowsFormsApp
             File.AppendAllText(path, tmpStr);
         }
 
+        private void recognizeButton_Click(object sender, EventArgs e)
+        {
+            network.ForwardPass(inputPixels);
+            label_output.Text = network.Fact.ToList().IndexOf(network.Fact.Max()).ToString();
+            label_probability.Text = (100*network.Fact.Max()).ToString("0.00") + " %";
+        }
     }
 }
