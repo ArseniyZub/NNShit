@@ -278,7 +278,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1180, 682);
+            this.ClientSize = new System.Drawing.Size(600, 470);
             this.Controls.Add(this.label_probability);
             this.Controls.Add(this.label_output);
             this.Controls.Add(this.recognize);
