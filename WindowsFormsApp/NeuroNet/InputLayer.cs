@@ -52,5 +52,26 @@ namespace WindowsFormsApp.NeuroNet
                     break;
             }
         }
+
+        //Перестановка строк методом Фишера-Йетса.
+        public void Shuffling_Array_Rows(double[,] arr)
+        {
+            Random rand = new Random();
+
+            int rows = arr.GetLength(0);
+            int cols = arr.GetLength(1);
+
+            for (int i = rows - 1; i > 0; i--)
+            {
+                int j = rand.Next(i + 1);
+
+                for (int k = 0; k < cols; k++)
+                {
+                    double temp = arr[i, k];
+                    arr[i, k] = arr[j, k];
+                    arr[j, k] = temp;
+                }
+            }
+        }
     }
 }

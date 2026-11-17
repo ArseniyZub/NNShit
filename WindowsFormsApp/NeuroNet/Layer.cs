@@ -12,8 +12,8 @@ namespace WindowsFormsApp.NeuroNet
         protected string pathFileWeights;
         protected int numOfNeurons;
         protected int numOfPrevNeurons;
-        protected const double learningRate = 0.05d;
-        protected const double momentum = 0.05d;
+        protected const double learningRate = 0.005d; //0.05d; найди до 3-х знаков больше надо
+        protected const double momentum = 0.0d; // 0.05d; сначала при нуле момента потом настраиваем момент
         protected double[,] lastDeltaWeights;
         protected Neuron[] neurons;
 

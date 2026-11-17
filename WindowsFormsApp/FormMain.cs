@@ -76,5 +76,15 @@ namespace WindowsFormsApp
             label_output.Text = network.Fact.ToList().IndexOf(network.Fact.Max()).ToString();
             label_probability.Text = (100*network.Fact.Max()).ToString("0.00") + " %";
         }
+
+        private void button_training_click(object sender, EventArgs e)
+        {
+            network.Train(network);
+            for (int i = 0; i < network.E_error_avr.Length; i++)
+            {
+                chart_Eavr.Series[0].Points.AddY(network.E_error_avr[i]);
+            }
+            MessageBox.Show("Обучение успешно завершен. ", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
