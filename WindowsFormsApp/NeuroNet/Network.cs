@@ -31,7 +31,7 @@ namespace WindowsFormsApp.NeuroNet
         {
             input_layer = new InputLayer(NetworkMode.Train);
 
-            int epoches = 100; // эпохи обучения (Изменить!!!) около 5-6
+            int epoches = 20; // эпохи обучения (Изменить!!!) около 5-6
             double tmpSumError;
 
             double[] errors;// вектор сигнала ошибки входного слоя

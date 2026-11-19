@@ -12,8 +12,8 @@ namespace WindowsFormsApp.NeuroNet
         protected string pathFileWeights;
         protected int numOfNeurons;
         protected int numOfPrevNeurons;
-        protected const double learningRate = 0.005d; //0.05d; найди до 3-х знаков больше надо
-        protected const double momentum = 0.0d; // 0.05d; сначала при нуле момента потом настраиваем момент
+        protected const double learningRate = 0.04d; // 0.0525d; //0.05d; найди до 3-х знаков 
+        protected const double momentum = 0.d; // 0.05d; сначала при нуле момента потом настраиваем момент
         protected double[,] lastDeltaWeights;
         protected Neuron[] neurons;
 
@@ -121,15 +121,16 @@ namespace WindowsFormsApp.NeuroNet
                     tmpStrWeights = new string[numOfNeurons]; // массив строк синаптических весов
 
                     double std = 1.0 / Math.Sqrt(numOfPrevNeurons);
-                    double a = Math.Sqrt(3.0) / std;
+                    double a = Math.Sqrt(3.0) * std;
 
                     for (int i = 0; i < numOfNeurons; i++)
                     {
                         tmpStr = "";
                         for (int j = 0; j < numOfPrevNeurons + 1; j++)
                         {
-                            tmpArr[j] = (2.0*random.NextDouble() - 1.0)*a; // случайная инициализация
-                                                                         // синаптического веса от -0.01 до 0.01
+                            tmpArr[j] = (2.0*random.NextDouble() - 1.0)*a; // случайная инициализация; синаптического веса от -0.01 до 0.01
+
+                            weights[i, j] = tmpArr[j]; 
                             if (j > 0)
                             {
                                 tmpStr += ';';
